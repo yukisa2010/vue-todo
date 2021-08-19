@@ -1,3 +1,21 @@
+Vue.component('todo-items', {
+    props: ['todos'],
+    template: `
+        <ul>
+            <li v-for="todo in todos" :key="todo.text" :class="{ done : todo.done }">
+                {{ todo.text }}
+                <input type="checkbox" @click="check(todo)"/>
+            </li>
+        </ul>
+    `,
+    methods: {
+        check(todo) {
+            this.$emit('check', todo)
+        }
+    }
+})
+
+
 var app = new Vue({
     el: '#app',
     data: {
@@ -45,3 +63,4 @@ var app = new Vue({
         }
     }
 })
+

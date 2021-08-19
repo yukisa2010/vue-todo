@@ -21,20 +21,10 @@
             <button @click="addTodo">追加</button>
             <!-- Output <Todo> -->
             <h2>Todo</h2>
-            <ul>
-                <li v-for="todo in todoItems" v-if="!todo.done" :key="todo.text" :class="{ done : todo.done }">
-                    {{ todo.text }}
-                    <input type="checkbox" @click="checkTodo(todo)"/>
-                </li>
-            </ul>
+            <todo-items :todos="todoItems" @check="checkTodo"></todo-items>
             <!-- Output <Done> -->
             <h2>Done</h2>
-            <ul>
-                <li v-for="todo in doneItems" v-if="todo.done" :key="todo.text" :class="{ done : todo.done }">
-                    {{ todo.text }}
-                    <input type="checkbox" @click="checkTodo(todo)"/>
-                </li>
-            </ul>
+            <todo-items :todos="doneItems" @check="checkTodo"></todo-items>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
         <script src="./main.js"></script>        

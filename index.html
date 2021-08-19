@@ -8,13 +8,16 @@
             .done {
                 text-decoration: line-through;
             }
+            [v-cloak] {
+                display: none;
+            }
         </style>
     </head>
     <body>
         <div id="app">
             <!-- Error Messages -->
             <ul>
-                <li v-for="msg in errorMessages">{{ msg }}</li>
+                <li v-for="msg in errorMessages" v-cloak>{{ msg }}</li>
             </ul>
             <!-- Input -->
             <input type="text" v-model="inputText"/>

@@ -3,15 +3,15 @@ var app = new Vue({
     data: {
         inputText: "",
         todos: [],
-        ErrorMessages: []
+        errorMessages: []
     },
     methods: {
         addTodo() {
-            this.ErrorMessages = []
+            this.errorMessages = []
             if(this.inputText === '') {
-                this.ErrorMessages.push('Todoは1文字以上で入力してください。')
+                this.errorMessages.push('Todoは1文字以上で入力してください。')
             } else if(this.inputText.length >= 10) {
-                this.ErrorMessages.push('Todoは10文字以下で入力してください。')
+                this.errorMessages.push('Todoは10文字以下で入力してください。')
             } else if(this.inputText !== '') {
                 todo = {}
                 todo.text = this.inputText
@@ -20,8 +20,28 @@ var app = new Vue({
                 this.inputText = ''
             }
         },
-        doneTodo(todo) {
+        checkTodo(todo) {
             todo.done = !todo.done
+        }
+    },
+    computed: {
+        todoItems() {
+            items = []
+            this.todos.forEach(function(todo) {
+                if (!todo.done) {
+                    items.push(todo)
+                }
+            })
+            return items
+        },
+        doneItems() {
+            items = []
+            this.todos.forEach(function(todo) {
+                if (todo.done) {
+                    items.push(todo)
+                }
+            })
+            return items
         }
     }
 })

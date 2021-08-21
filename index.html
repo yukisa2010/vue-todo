@@ -5,9 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Todo App</title>
         <style>
-            .done {
-                text-decoration: line-through;
-            }
             [v-cloak] {
                 display: none;
             }
@@ -24,10 +21,10 @@
             <button @click="addTodo">追加</button>
             <!-- Output <Todo> -->
             <h2>Todo</h2>
-            <todo-items :todos="todoItems" @check="checkTodo"></todo-items>
+            <todo-items :todos="todos" @check="checkTodo"></todo-items>
             <!-- Output <Done> -->
             <h2>完了</h2>
-            <done-items :todos="doneItems" @check="checkTodo"></done-items>
+            <done-items :todos="todos" @check="checkTodo"></done-items>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
         <script src="./main.js"></script>        

@@ -84,13 +84,12 @@ var app = new Vue({
             this.errorMessages = []
             if(this.inputText === '') {
                 this.errorMessages.push('Todoは1文字以上で入力してください。')
-                return false
-            } else if(this.inputText.length > 10) {
-                this.errorMessages.push('Todoは10文字以下で入力してください。')
-                return false
-            } else if(this.inputText !== '') {
-                return true
             }
+            if(this.inputText.length > 10) {
+                this.errorMessages.push('Todoは10文字以下で入力してください。')
+            }
+            
+            return this.errorMessages.length === 0
         },
         checkTodo(todo) {
             todo.done = !todo.done

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Todo App</title>
+        <style>
+            [v-cloak] {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <!-- Error Messages -->
+            <ul>
+                <li v-for="msg in errorMessages" v-cloak>{{ msg }}</li>
+            </ul>
+            <!-- Input -->
+            <input type="text" v-model="inputText"/>
+            <button @click="addTodo">追加</button>
+            <!-- Output <Todo> -->
+            <h2>Todo</h2>
+            <todo-items :todos="todos" @check="checkTodo"></todo-items>
+            <!-- Output <Done> -->
+            <h2>完了</h2>
+            <done-items :todos="todos" @check="checkTodo"></done-items>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+        <script src="./main.js"></script>        
+    </body>
+</html>
